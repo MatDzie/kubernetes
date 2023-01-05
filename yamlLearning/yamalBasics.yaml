@@ -1,3 +1,5 @@
+# this is comment
+
 list:
   - eggs
   - milk
@@ -7,7 +9,6 @@ alsoList:
   thing
   anotherThing
 
-# this is comment
 listWithMappedObjects:
   fruits:
     apple: 2

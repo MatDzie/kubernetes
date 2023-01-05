@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet # in old version ReplicationController was used
+metadata:
+  name: myreplicaset
+spec: # desired state configuration
+  replicas: 3 # number of pods that you would like to keep running (kubernetes will take care to keep that many up all the time)
+  selector:
+    matchLabels:
+      app: nginx # it uses label as a way of finding the pod or group of pods to scale
+  template:
+    metadata:
+      name: proxy
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginxcontainer
+        image: nginx:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 80
