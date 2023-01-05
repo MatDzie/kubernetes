@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  mydeployment
+  labels:
+    name:  mydeployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels: 
+      app: nginx
+  strategy:
+    rollingUpdate:
+      maxSurge: 1 # max number of pods that can be scheduled above desired number of pods
+      maxUnavailable: 1 # max number of pods that can be unavailable during update
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginxcontainer
+        image: nginx:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 80
