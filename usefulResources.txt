@@ -1,0 +1,8 @@
+VSC Plugins:
+- Kubernetes
+- Kubernetes Support
+- Non-breaking spaces
+- YAML
+
+- Dev Containers
+- Docker

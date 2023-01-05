@@ -1,0 +1,16 @@
+apiVersion: v1 # its for template for schema
+kind: Pod # tells kubernetes what to create
+metadata: # details about pod
+  name: nginx
+  labels:
+    name: myPod
+spec: # this tells what to create
+  containers:
+  - name: nginxContainer # name we want to give the container inside the pod
+    image: nginx:latest # docker image that should be used, will pull from dockerhub in case of missing locally
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
