@@ -4,9 +4,10 @@ metadata: # details about pod
   name: nginx
   labels:
     name: myPod
+    type: proxy
 spec: # this tells what to create
   containers:
-  - name: nginxContainer # name we want to give the container inside the pod
+  - name: nginx-container # name we want to give the container inside the pod
     image: nginx:latest # docker image that should be used, will pull from dockerhub in case of missing locally
     resources:
       limits:
