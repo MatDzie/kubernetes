@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myApp
+  labels:
+    name: myPod
+    type: proxy
+spec:
+  containers:
+  - name: myApp
+    image: myImg
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+    readinessProbe: # settings for checking if app is ready, runs at start untill success or failure condition is met
+      httpGet:
+        path: /readiness
+        port: 8080
+      initialDelaySeconds: 5 # waits that amount with first check
+      periodSeconds: 5 # will querry with this frequency
+      timeoutSeconds: 5
+      successThreshold: 1 # if it passes this number of times, conteiner will be marked as ready
+      failureThreshold: 3 # if it fails this number of times, will mark conteiner as unhealty
+    livenessProbe: # settings for checking if app is alive, same params as readinessProbe but starts after container is ready
+      httpGet:
+        path: /liveness
+        port: 8080
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 5
+      successThreshold: 1
+      failureThreshold: 3
