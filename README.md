@@ -23,22 +23,22 @@ https://minikube.sigs.k8s.io/docs/start/
 ## Knowledge base:
 - Pod
 
-Pods are the smallest, most basic deployable objects in Kubernetes. A Pod represents a single instance of a running process in your cluster. Pods contain one or more containers, such as Docker containers. When a Pod runs multiple containers, the containers are managed as a single entity and share the Pod's resources.
+    Pods are the smallest, most basic deployable objects in Kubernetes. A Pod represents a single instance of a running process in your cluster. Pods contain one or more containers, such as Docker containers. When a Pod runs multiple containers, the containers are managed as a single entity and share the Pod's resources.
 
 - ReplicaSet
 
-A ReplicaSet (RS) is a Kubernetes object used to maintain a stable set of replicated pods running within a cluster at any given time.
+    A ReplicaSet (RS) is a Kubernetes object used to maintain a stable set of replicated pods running within a cluster at any given time.
 
 - Deployment
 
-A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
+    A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
 - How do Pods communicate in Kubernetes? 
 
-K8s create internal virtual network which is accessable inside the cluster. Each Pod gets an cluster IP address (10.x.x.x).
+    K8s create internal virtual network which is accessable inside the cluster. Each Pod gets an cluster IP address (10.x.x.x).
 
 - How can we communicate with a Pod from outside of K8s?
 
-There are three different services to communicate with a Pod: LoadBalancer (used when platform supports it and its needed for trafic managment), Ingress (most popular option), and NodePort (shouldn't be used on production, highly unsecure).
+    There are three different services to communicate with a Pod: LoadBalancer (used when platform supports it and its needed for trafic managment), Ingress (most popular option), and NodePort (shouldn't be used on production, highly unsecure).
 
-Service can be viewed as routing record, it's not an actual running process.
+    Service can be viewed as routing record, it's not an actual running process.
