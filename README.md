@@ -37,10 +37,18 @@ https://minikube.sigs.k8s.io/docs/start/
 
 - How do Pods communicate in Kubernetes? 
 
-    K8s create internal virtual network which is accessable inside the cluster. Each Pod gets an cluster IP address (10.x.x.x).
+    K8s create internal virtual network which is accessable inside the cluster. Each Pod gets an cluster IP address (10.x.x.x). 
+    
+    Best way to talk to Pods is by creating ClusterIP service which will create enpoints for them.
+
+    Generic endpoint format: service-name.namespace-name.svc.cluster.domain
 
 - How can we communicate with a Pod from outside of K8s?
 
     There are three different services to communicate with a Pod: LoadBalancer (used when platform supports it and its needed for trafic managment), Ingress (most popular option), and NodePort (shouldn't be used on production, highly unsecure).
 
     Service can be viewed as routing record, it's not an actual running process.
+
+- Namespace
+
+    Namespaces are used to separate concerns in k8s. We create them with kind:Namesace and to put some object into given namespace we define it in object metadata as namespace: namespace-name.

@@ -1,0 +1,17 @@
+# default namespace
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app3
+  labels:
+    name: app3
+spec:
+  containers:
+  - name: app3
+    image: nginx:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
