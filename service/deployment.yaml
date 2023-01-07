@@ -21,10 +21,10 @@ spec:
     spec:
       containers:
       - name: web-server
-        image: httpd:2.4
+        image: nginx:latest
         resources:
           limits:
             memory: "500Mi"
             cpu: "500m"
         ports:
-          - containerPort: 8080
+          - containerPort: 80

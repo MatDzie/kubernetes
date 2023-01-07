@@ -9,5 +9,5 @@ spec:
     server: web # links with a label inside deployment.yaml
   type: ClusterIP
   ports:
-  - port:  80
-    targetPort:  8080 # port of webserver Pod that we want to connect to
+  - port:  8080
+    targetPort:  80 # port of webserver Pod that we want to connect to

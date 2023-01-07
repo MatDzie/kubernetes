@@ -14,4 +14,4 @@ spec:
           service:
             name: web-service # name of K8s service that we would like to connect to
             port: 
-              number: 80 # port of K8s web-service
+              number: 8080 # port of K8s web-service
