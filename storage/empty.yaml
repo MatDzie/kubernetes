@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: myapp
+    image: nginx:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+    volumeMounts:
+      - name: mystorage
+        mountPath: /etc/certs # path where volume should be created
+  volumes:
+    - name: mystorage
+      emptyDir: {} # creates volume that lasts lifecycle of the Pod, and is accessible by all containers of this Pod
