@@ -1,0 +1,18 @@
+# Pod for load balancer example
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    name: myPod
+    type: proxy
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
