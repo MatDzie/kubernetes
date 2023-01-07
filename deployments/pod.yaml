@@ -11,7 +11,7 @@ spec: # this tells what to create
     image: nginx:latest # docker image that should be used, will pull from dockerhub in case of missing locally
     resources:
       limits:
-        memory: "128Mi"
-        cpu: "500m"
+        memory: "128Mi" # measured in bytes (1024 = 1Ki but 1000 = 1k)
+        cpu: "500m" # measured in cpu units 1=1 CPU/virtual core, 
     ports:
       - containerPort: 80

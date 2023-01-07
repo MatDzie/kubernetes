@@ -52,3 +52,19 @@ https://minikube.sigs.k8s.io/docs/start/
 - Namespace
 
     Namespaces are used to separate concerns in k8s. We create them with kind:Namesace and to put some object into given namespace we define it in object metadata as namespace: namespace-name.
+
+- Persistent Volumes (PV)
+
+    Way of making storage availble inside k8s. Used with EBS (Elastic Block Storage - virtual hard drive) on AWS for example. To name them we use Storage Class Names.
+
+ - Persistent Volume Claims (PVC)
+
+    Way of saying that I want a chunk of that storage to use it.
+
+- Static vs Dynamic Storage Classes
+
+    Static: we as administrator have to create Persistent Volumes, manage it.
+    Dynamic: we delegate job for creating and managment to k8s.
+
+
+

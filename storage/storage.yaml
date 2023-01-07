@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-pv
+spec:
+  storageClassName: admin-storage
+  capacity:
+    storage: 1Gi # creating volume of 1GB
+  hostPath: # minikube specific thing for data storage
+    path: /data/my-pv
+  accessModes:
+    - ReadWriteOnce
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+spec:
+  storageClassName: admin-storage # claim to given PV
+  resources:
+    requests:
+      storage: 512Mi
+  accessModes:
+    - ReadWriteOnce
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: storage-demo
+  labels:
+    name: pvc-demo
+spec:
+  containers:
+  - name: demo-container
+    image: nginx:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+    volumeMounts:
+      - name: pv-storage # volume that we want to mount
+        mountPath: /usr/share/nginx/html # where we want to mount in container
+  volumes:
+    - name: pv-storage
+      persistentVolumeClaim:
+        claimName: my-pvc # link with PVC
