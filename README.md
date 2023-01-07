@@ -1,6 +1,8 @@
 # Kubernetes learning
 
-## minikube - a lightweight Kubernetes implementation that creates a VM on your local machine and deploys a simple cluster containing only one node.
+## minikube
+A lightweight Kubernetes implementation that creates a VM on your local machine and deploys a simple cluster containing only one node.
+
 https://minikube.sigs.k8s.io/docs/start/
 
 ## VSC Plugins:
@@ -13,10 +15,10 @@ https://minikube.sigs.k8s.io/docs/start/
 
 ## Kubernetes commands:
 - kubectl create -f fileName
-- kubectl apply -f fileName (updates running pod/replicaset/deployment)
-- kubectl delete pod/replicaset/deployment name
-- kubectl get pods/replicaset/deployment
-- kubectl describe pods/replicaset/deployment
+- kubectl apply -f fileName (updates running pod/replicaset/deployment/service)
+- kubectl delete pod/replicaset/deployment/service name
+- kubectl get pods/replicaset/deployment/service
+- kubectl describe pods/replicaset/deployment/service
 - kubectl exec -it podName -c containerName -- /bin/bash (connects to conteiner with terminal)
 - kubectl logs podName -c containerName (displays standard output from container)
 

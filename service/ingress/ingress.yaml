@@ -1,0 +1,17 @@
+# connects to K8s service, and exposes connection as host
+apiVersion: networking.k8s.io/v1
+kind: Ingress # minikube default ingress controler is ngnix (probably most used one)
+metadata:
+  name: web-ingress
+spec:
+  rules:
+  - host: mysite.local # configured as a fake real life web server, if you querry this site you will be forwarded to Service->Pod
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: web-service # name of K8s service that we would like to connect to
+            port: 
+              number: 80 # port of K8s web-service

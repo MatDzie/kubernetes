@@ -13,3 +13,9 @@ listWithMappedObjects:
   fruits:
     apple: 2
     banana: three
+
+listWithMappedMultipleObjects: # list of two dictionaries with two key-value pairs each
+  - key1: value1
+    key2: value2
+  - key3: value3
+    key4: value4

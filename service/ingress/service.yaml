@@ -1,0 +1,13 @@
+# Pod will be connected to this service and this service will be connected to Ingress
+# IP that will be given for this service is accessible only in K8s cluster
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  selector:
+    server: web # links with a label inside deployment.yaml
+  type: ClusterIP
+  ports:
+  - port:  80
+    targetPort:  8080 # port of webserver Pod that we want to connect to
