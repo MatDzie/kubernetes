@@ -1,4 +1,4 @@
-# Kubernetes learning
+# Kubernetes Learning Repo
 
 ## minikube
 A lightweight Kubernetes implementation that creates a VM on your local machine and deploys a simple cluster containing only one node.
@@ -13,23 +13,37 @@ https://minikube.sigs.k8s.io/docs/start/
 - Dev Containers
 - Docker
 
-## Kubernetes commands:
+## Kubernetes useful commands:
 - kubectl create -f fileName
-- kubectl apply -f fileName (updates running pod/replicaset/deployment/service)
-- kubectl delete pod/replicaset/deployment/service name
-- kubectl get pods/replicaset/deployment/service
-- kubectl describe pods/replicaset/deployment/service
-- kubectl exec -it podName -c containerName -- /bin/bash (connects to conteiner with terminal)
-- kubectl logs podName -c containerName (displays standard output from container)
+- kubectl apply -f fileName
+- kubectl delete 'kind' objectName
+- kubectl get 'kind'
+- kubectl describe 'kind'
 
-## Knowledge base:
+- kubectl exec -it podName -c containerName -- /bin/bash (connects to container with terminal)
+- kubectl logs podName -c containerName (displays standard output from container)
+- kubectl get 'kind' objectName -o yaml > newFile.yaml (writes object to .yaml)
+- kubectl edit 'kind' objectName (opens running object configuration in editor allowing for changes on the fly, it will open the editor defined by your KUBE_EDITOR)
+- kubectl top 'kind' (see CPU and memory usage of object)
+
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
+## Key concepts:
+- Node
+
+    A node is the smallest unit of computing hardware. It is a representation of a single machine in your cluster. In most production systems, a node will likely be either a physical machine in a datacenter, or virtual machine hosted on a cloud provider.
+
+- Cluster
+
+    A cluster is a set of nodes that run containerized applications.
+
 - Pod
 
     Pods are the smallest, most basic deployable objects in Kubernetes. A Pod represents a single instance of a running process in your cluster. Pods contain one or more containers, such as Docker containers. When a Pod runs multiple containers, the containers are managed as a single entity and share the Pod's resources.
 
 - ReplicaSet
 
-    A ReplicaSet (RS) is a Kubernetes object used to maintain a stable set of replicated pods running within a cluster at any given time.
+    A ReplicaSet (RS) is object used to maintain a stable set of replicated pods running within a cluster at any given time.
 
 - Deployment
 
@@ -66,5 +80,13 @@ https://minikube.sigs.k8s.io/docs/start/
     Static: we as administrator have to create Persistent Volumes, manage it.
     Dynamic: we delegate job for creating and managment to k8s.
 
+- ConfigMaps
 
+    A ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume.
+
+    A ConfigMap allows you to decouple environment-specific configuration from your container images, so that your applications are easily portable.
+
+- Secret
+
+    A Secret is an object that contains a small amount of sensitive data such as a password, a token, or a key. Such information might otherwise be put in a Pod specification or in a container image. Using a Secret means that you don't need to include confidential data in your application code.
 
