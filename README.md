@@ -77,8 +77,8 @@ https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
 - Static vs Dynamic Storage Classes
 
-    Static: we as administrator have to create Persistent Volumes, manage it.
-    Dynamic: we delegate job for creating and managment to k8s.
+    Static - we as administrator have to create Persistent Volumes, manage it.
+    Dynamic - we delegate job for creating and managment to k8s.
 
 - ConfigMaps
 
@@ -90,3 +90,8 @@ https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
     A Secret is an object that contains a small amount of sensitive data such as a password, a token, or a key. Such information might otherwise be put in a Pod specification or in a container image. Using a Secret means that you don't need to include confidential data in your application code.
 
+- Horizontal/Vertical Pod Autoscaling
+
+    Horizontal (HPA) - based on load threshold adds/removes Pods. Problem with Default Metric API (which uses CPU and Memory as treshold) is most common in Java applications where JVM wants to take all memory available, and with GC which may be lazy with object deletion. To solve this use Custom Metric API with number of requests as thresholds. 
+
+    Vertical (VPA) - based on load threshold increase Pod size by spawning new larger Pod and terminating old smaller one.
